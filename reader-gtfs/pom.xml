@@ -74,6 +74,13 @@
             <groupId>jakarta.inject</groupId>
             <artifactId>jakarta.inject-api</artifactId>
         </dependency>
+        <!-- Java Faker -->
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>1.0.2</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -83,6 +90,46 @@
                 <!-- Currently we need a bit more memory than for other tests -->
                 <configuration>
                     <argLine>@{argLine} -Xmx1200m -Xms1200m -Duser.language=en</argLine>
+                </configuration>
+            </plugin>
+
+            <!-- PITEST -->
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>1.17.1</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.pitest</groupId>
+                        <artifactId>pitest-junit5-plugin</artifactId>
+                        <version>1.2.1</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <targetClasses>
+                        <param>com.graphhopper.reader.gtfs.*</param>
+                        <param>com.graphhopper.gtfs.*</param>
+                    </targetClasses>
+                    <targetTests>
+                        <param>com.graphhopper.gtfs.*</param>
+                        <param>com.graphhopper.reader.gtfs.*</param>
+                    </targetTests>
+                    <outputFormats>
+                        <param>HTML</param>
+                        <param>XML</param>
+                    </outputFormats>
+                    <timestampedReports>false</timestampedReports>
+                    <mutationThreshold>30</mutationThreshold>
+                    <coverageThreshold>0</coverageThreshold>
+                    <timeoutConstant>3000</timeoutConstant>
+                    <verbose>true</verbose>
+                    <threads>2</threads>
+                    <failWhenNoMutations>false</failWhenNoMutations>
+                    <jvmArgs>
+                        <value>-Xmx1200m</value>
+                        <value>-Xms1200m</value>
+                    </jvmArgs>
+                    <useClasspathFile>true</useClasspathFile>
                 </configuration>
             </plugin>
         </plugins>
