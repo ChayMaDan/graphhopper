@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>TicketPurchase.java</h1>
+
+<table class="src">
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/*</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  Licensed to GraphHopper GmbH under one or more contributor</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_3'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  license agreements. See the NOTICE file distributed with this work for</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  additional information regarding copyright ownership.</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_5'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_6'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  GraphHopper GmbH licenses this file to you under the Apache License,</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  Version 2.0 (the &#34;License&#34;); you may not use this file except in</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_8'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  compliance with the License. You may obtain a copy of the License at</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_9'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_10'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *       http://www.apache.org/licenses/LICENSE-2.0</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_11'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_12'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  Unless required by applicable law or agreed to in writing, software</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_13'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  distributed under the License is distributed on an &#34;AS IS&#34; BASIS,</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_14'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_15'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  See the License for the specific language governing permissions and</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_16'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> *  limitations under the License.</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_17'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_18'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_19'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package com.graphhopper.gtfs.fare;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_20'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_21'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.*;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_22'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_23'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>class TicketPurchase {</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_24'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public final List&#60;FareAssignment&#62; fareAssignments;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_25'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_26'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    TicketPurchase(List&#60;FareAssignment&#62; fareAssignments) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_27'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.fareAssignments = fareAssignments;</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_28'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_29'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_30'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    List&#60;Ticket&#62; getTickets() {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_31'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        Map&#60;String, TicketPurchaseScoreCalculator.TempTicket&#62; currentTickets = new HashMap&#60;&#62;();</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_32'/>
+32
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_32'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        for (FareAssignment fareAssignment : fareAssignments) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_33'/>
+33
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_33'>1</a>
+<span>
+1. getTickets : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            if (fareAssignment.fare != null) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_34'/>
+34
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_34'>1</a>
+<span>
+1. lambda$getTickets$0 : replaced return value with null for com/graphhopper/gtfs/fare/TicketPurchase::lambda$getTickets$0 &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                currentTickets.computeIfAbsent(fareKey(fareAssignment), fareId -&#62; new TicketPurchaseScoreCalculator.TempTicket());</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_35'/>
+35
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_35'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                currentTickets.compute(fareKey(fareAssignment), (s, tempTicket) -&#62; {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_36'/>
+36
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_36'>3</a>
+<span>
+1. lambda$getTickets$1 : changed conditional boundary &rarr; SURVIVED<br/>
+2. lambda$getTickets$1 : negated conditional &rarr; KILLED<br/>
+3. lambda$getTickets$1 : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                    if (fareAssignment.segment.getStartTime() &#62; tempTicket.validUntil</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_37'/>
+37
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_37'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                            || tempTicket.nMoreTransfers == 0) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_38'/>
+38
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_38'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                        tempTicket.feed_id = fareAssignment.segment.feed_id;</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_39'/>
+39
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_39'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                        tempTicket.fare = fareAssignment.fare;</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_40'/>
+40
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_40'>1</a>
+<span>
+1. lambda$getTickets$1 : Replaced long addition with subtraction &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                        tempTicket.validUntil = fareAssignment.segment.getStartTime() + fareAssignment.fare.fare_attribute.transfer_duration;</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_41'/>
+41
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_41'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                        tempTicket.nMoreTransfers = fareAssignment.fare.fare_attribute.transfers;</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_42'/>
+42
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_42'>1</a>
+<span>
+1. lambda$getTickets$1 : Replaced integer addition with subtraction &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                        tempTicket.totalNumber++;</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_43'/>
+43
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_43'>1</a>
+<span>
+1. lambda$getTickets$1 : replaced return value with null for com/graphhopper/gtfs/fare/TicketPurchase::lambda$getTickets$1 &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                        return tempTicket;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_44'/>
+44
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_44'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                    } else {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_45'/>
+45
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_45'>1</a>
+<span>
+1. lambda$getTickets$1 : Replaced integer subtraction with addition &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                        tempTicket.nMoreTransfers--;</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_46'/>
+46
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_46'>1</a>
+<span>
+1. lambda$getTickets$1 : replaced return value with null for com/graphhopper/gtfs/fare/TicketPurchase::lambda$getTickets$1 &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                        return tempTicket;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_47'/>
+47
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_47'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                    }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_48'/>
+48
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_48'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                });</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_49'/>
+49
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_49'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_50'/>
+50
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_50'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        }</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_51'/>
+51
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_51'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        ArrayList&#60;Ticket&#62; tickets = new ArrayList&#60;&#62;();</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_52'/>
+52
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_52'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        for (TicketPurchaseScoreCalculator.TempTicket t : currentTickets.values()) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_53'/>
+53
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_53'>2</a>
+<span>
+1. getTickets : negated conditional &rarr; KILLED<br/>
+2. getTickets : changed conditional boundary &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            for (int i = 0; i&#60;t.totalNumber; i++) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_54'/>
+54
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_54'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                tickets.add(new Ticket(t.feed_id, t.fare));</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_55'/>
+55
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_55'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_56'/>
+56
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_56'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        }</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_57'/>
+57
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_57'>1</a>
+<span>
+1. getTickets : replaced return value with Collections.emptyList for com/graphhopper/gtfs/fare/TicketPurchase::getTickets &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return tickets;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_58'/>
+58
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_58'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_59'/>
+59
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_59'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_60'/>
+60
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_60'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private String fareKey(FareAssignment fareAssignment) {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_61'/>
+61
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_61'>1</a>
+<span>
+1. fareKey : replaced return value with &#34;&#34; for com/graphhopper/gtfs/fare/TicketPurchase::fareKey &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return fareAssignment.fare.fare_id+&#34;_&#34;+fareAssignment.fare.fare_attribute.feed_id;</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_62'/>
+62
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_62'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_63'/>
+63
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_63'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_64'/>
+64
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_64'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    int getNSchwarzfahrTrips() {</span></pre></td></tr>
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_65'/>
+65
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_65'>3</a>
+<span>
+1. getNSchwarzfahrTrips : replaced int return with 0 for com/graphhopper/gtfs/fare/TicketPurchase::getNSchwarzfahrTrips &rarr; SURVIVED<br/>
+2. lambda$getNSchwarzfahrTrips$2 : negated conditional &rarr; KILLED<br/>
+3. lambda$getNSchwarzfahrTrips$2 : replaced boolean return with true for com/graphhopper/gtfs/fare/TicketPurchase::lambda$getNSchwarzfahrTrips$2 &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        return (int) fareAssignments.stream().filter(assignment -&#62; assignment.fare == null).count();</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_66'/>
+66
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_66'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@1eb294c3_67'/>
+67
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_67'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1eb294c3_33'>33</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_33'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getTickets<br/><b>Killed by : </b>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:buyMoreThanOneTicketIfTripIsLongerThanAllowedOnOne(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#14]</span></span> negated conditional &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1eb294c3_34'>34</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_34'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lambda$getTickets$0<br/><b>Killed by : </b>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#38]</span></span> replaced return value with null for com/graphhopper/gtfs/fare/TicketPurchase::lambda$getTickets$0 &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1eb294c3_36'>36</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_36'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lambda$getTickets$1<br/><b>Killed by : </b>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:buyMoreThanOneTicketIfTripIsLongerThanAllowedOnOne(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#12]</span></span> negated conditional &rarr; KILLED</span>
+</div> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>lambda$getTickets$1<br/><b>Killed by : </b>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:buyMoreThanOneTicketIfTripIsLongerThanAllowedOnOne(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#12]</span></span> negated conditional &rarr; KILLED</span>
+</div> <p class='SURVIVED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>lambda$getTickets$1<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=com.graphhopper.gtfs.fare.TicketPurchase,-method=lambda$getTickets$1,-methodDesc=(Lcom/graphhopper/gtfs/fare/FareAssignment;Ljava/lang/String;Lcom/graphhopper/gtfs/fare/TicketPurchaseScoreCalculator$TempTicket;)Lcom/graphhopper/gtfs/fare/TicketPurchaseScoreCalculator$TempTicket;],-indexes=[9],-mutator=org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=com.graphhopper.gtfs.fare.TicketPurchase,-method=lambda$getTickets$1,-methodDesc=(Lcom/graphhopper/gtfs/fare/FareAssignment;Ljava/lang/String;Lcom/graphhopper/gtfs/fare/TicketPurchaseScoreCalculator$TempTicket;)Lcom/graphhopper/gtfs/fare/TicketPurchaseScoreCalculator$TempTicket;],-indexes=[9],-mutator=org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=com.graphhopper.gtfs.fare.TicketPurchase,-method=lambda$getTickets$1,-methodDesc=(Lcom/graphhopper/gtfs/fare/FareAssignment;Ljava/lang/String;Lcom/graphhopper/gtfs/fare/TicketPurchaseScoreCalculator$TempTicket;)Lcom/graphhopper/gtfs/fare/TicketPurchaseScoreCalculator$TempTicket;],-indexes=[9],-mutator=org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#38]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#40]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#7]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#9]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#12]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#14]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#39]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#37]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#22]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#24]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#8]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#11]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#13]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#36]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#21]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#23]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#3]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#2]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#4]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#6]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#1]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#19]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#17]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#18]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#29]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#27]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#16]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#28]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:buyMoreThanOneTicketIfTripIsLongerThanAllowedOnOne(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#14]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:buyMoreThanOneTicketIfTripIsLongerThanAllowedOnOne(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#12]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:withNoTransfersAndNoAlternativesBuyOneTicketForEachSegment(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#38]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:canGoAllTheWayOnOneTicket(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#2]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:canGoAllTheWayOnOneTicket(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#4]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:canGoAllTheWayOnOneTicket(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#6]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:canGoAllTheWayOnOneTicket(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#11]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:canGoAllTheWayOnOneTicket(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#13]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:withNoTransfersAndNoAlternativesBuyOneTicketForEachSegment(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#40]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:canGoAllTheWayOnOneTicket(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#36]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:withNoTransfersAndNoAlternativesBuyOneTicketForEachSegment(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#37]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:withNoTransfersAndNoAlternativesBuyOneTicketForEachSegment(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#39]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:canGoAllTheWayOnOneTicket(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#3]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#26]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#34]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#32]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifAllLegsPassThroughAllZonesOfTheTripItCantGetCheaper(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#39]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:withNoTransfersAndNoAlternativesBuyOneTicketForEachSegment(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#36]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#33]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#31]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifAllLegsPassThroughAllZonesOfTheTripItCantGetCheaper(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#38]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifAllLegsPassThroughAllZonesOfTheTripItCantGetCheaper(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#40]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifAllLegsPassThroughAllZonesOfTheTripItCantGetCheaper(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#37]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:canGoAllTheWayOnOneTicket(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#1]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:canGoAllTheWayOnOneTicket(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#21]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:canGoAllTheWayOnOneTicket(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#23]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifAllLegsPassThroughAllZonesOfTheTripItCantGetCheaper(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#36]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:irrelevantAlternatives(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#31]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:irrelevantAlternatives(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#32]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:irrelevantAlternatives(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#21]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:irrelevantAlternatives(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#24]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:irrelevantAlternatives(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#23]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:irrelevantAlternatives(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#33]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:irrelevantAlternatives(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#22]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:irrelevantAlternatives(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#34]</li> <li>com.graphhopper.gtfs.fare.MoreFareTests.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.MoreFareTests]/[method:wurst()]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1eb294c3_40'>40</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_40'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lambda$getTickets$1<br/><b>Killed by : </b>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:canGoAllTheWayOnOneTicket(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#2]</span></span> Replaced long addition with subtraction &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1eb294c3_42'>42</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_42'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lambda$getTickets$1<br/><b>Killed by : </b>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:buyMoreThanOneTicketIfTripIsLongerThanAllowedOnOne(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#14]</span></span> Replaced integer addition with subtraction &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1eb294c3_43'>43</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_43'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lambda$getTickets$1<br/><b>Killed by : </b>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:buyMoreThanOneTicketIfTripIsLongerThanAllowedOnOne(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#14]</span></span> replaced return value with null for com/graphhopper/gtfs/fare/TicketPurchase::lambda$getTickets$1 &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1eb294c3_45'>45</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_45'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lambda$getTickets$1<br/><b>Killed by : </b>none</span></span> Replaced integer subtraction with addition &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=com.graphhopper.gtfs.fare.TicketPurchase,-method=lambda$getTickets$1,-methodDesc=(Lcom/graphhopper/gtfs/fare/FareAssignment;Ljava/lang/String;Lcom/graphhopper/gtfs/fare/TicketPurchaseScoreCalculator$TempTicket;)Lcom/graphhopper/gtfs/fare/TicketPurchaseScoreCalculator$TempTicket;],-indexes=[67],-mutator=org.pitest.mutationtest.engine.gregor.mutators.MathMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=com.graphhopper.gtfs.fare.TicketPurchase,-method=lambda$getTickets$1,-methodDesc=(Lcom/graphhopper/gtfs/fare/FareAssignment;Ljava/lang/String;Lcom/graphhopper/gtfs/fare/TicketPurchaseScoreCalculator$TempTicket;)Lcom/graphhopper/gtfs/fare/TicketPurchaseScoreCalculator$TempTicket;],-indexes=[67],-mutator=org.pitest.mutationtest.engine.gregor.mutators.MathMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=com.graphhopper.gtfs.fare.TicketPurchase,-method=lambda$getTickets$1,-methodDesc=(Lcom/graphhopper/gtfs/fare/FareAssignment;Ljava/lang/String;Lcom/graphhopper/gtfs/fare/TicketPurchaseScoreCalculator$TempTicket;)Lcom/graphhopper/gtfs/fare/TicketPurchaseScoreCalculator$TempTicket;],-indexes=[67],-mutator=org.pitest.mutationtest.engine.gregor.mutators.MathMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#24]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#14]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#13]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#23]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#2]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#4]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#3]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#29]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:canGoAllTheWayOnOneTicket(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#2]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:canGoAllTheWayOnOneTicket(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#3]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:canGoAllTheWayOnOneTicket(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#4]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:buyMoreThanOneTicketIfTripIsLongerThanAllowedOnOne(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#14]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:canGoAllTheWayOnOneTicket(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#13]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#34]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#32]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#33]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:canGoAllTheWayOnOneTicket(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#23]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:irrelevantAlternatives(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#32]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:irrelevantAlternatives(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#24]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:irrelevantAlternatives(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#23]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:irrelevantAlternatives(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#33]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:irrelevantAlternatives(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#34]</li> 
+</ul>
+</div></div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1eb294c3_46'>46</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_46'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lambda$getTickets$1<br/><b>Killed by : </b>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:canGoAllTheWayOnOneTicket(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#2]</span></span> replaced return value with null for com/graphhopper/gtfs/fare/TicketPurchase::lambda$getTickets$1 &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1eb294c3_53'>53</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_53'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getTickets<br/><b>Killed by : </b>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:buyMoreThanOneTicketIfTripIsLongerThanAllowedOnOne(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#14]</span></span> negated conditional &rarr; KILLED</span>
+</div> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getTickets<br/><b>Killed by : </b>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:withNoTransfersAndNoAlternativesBuyOneTicketForEachSegment(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#38]</span></span> changed conditional boundary &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1eb294c3_57'>57</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_57'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getTickets<br/><b>Killed by : </b>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:buyMoreThanOneTicketIfTripIsLongerThanAllowedOnOne(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#14]</span></span> replaced return value with Collections.emptyList for com/graphhopper/gtfs/fare/TicketPurchase::getTickets &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1eb294c3_61'>61</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_61'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>fareKey<br/><b>Killed by : </b>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:withNoTransfersAndNoAlternativesBuyOneTicketForEachSegment(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#40]</span></span> replaced return value with &#34;&#34; for com/graphhopper/gtfs/fare/TicketPurchase::fareKey &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@1eb294c3_65'>65</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@1eb294c3_65'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getNSchwarzfahrTrips<br/><b>Killed by : </b>none</span></span> replaced int return with 0 for com/graphhopper/gtfs/fare/TicketPurchase::getNSchwarzfahrTrips &rarr; SURVIVED</span>
+<a title="Click to view covering tests" class="view-covered-by-tests" onClick="document.getElementById('MutationIdentifier-[location=Location-[clazz=com.graphhopper.gtfs.fare.TicketPurchase,-method=getNSchwarzfahrTrips,-methodDesc=()I],-indexes=[10],-mutator=org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator]').style.display=(document.getElementById('MutationIdentifier-[location=Location-[clazz=com.graphhopper.gtfs.fare.TicketPurchase,-method=getNSchwarzfahrTrips,-methodDesc=()I],-indexes=[10],-mutator=org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator]').style.display == 'block')?'none':'block';">Covering tests</a>
+<div class="covered-tests" id="MutationIdentifier-[location=Location-[clazz=com.graphhopper.gtfs.fare.TicketPurchase,-method=getNSchwarzfahrTrips,-methodDesc=()I],-indexes=[10],-mutator=org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator]" style="display:none;">Covered by tests:
+<ul>
+<li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:canGoAllTheWayOnOneTicket(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#21]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:canGoAllTheWayOnOneTicket(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#23]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:irrelevantAlternatives(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#32]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:irrelevantAlternatives(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#21]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:irrelevantAlternatives(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#24]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:irrelevantAlternatives(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#23]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:irrelevantAlternatives(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#33]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:irrelevantAlternatives(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#22]</li> <li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:irrelevantAlternatives(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#34]</li> <li>com.graphhopper.gtfs.fare.MoreFareTests.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.MoreFareTests]/[method:wurst()]</li> 
+</ul>
+</div></div> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>lambda$getNSchwarzfahrTrips$2<br/><b>Killed by : </b>com.graphhopper.gtfs.fare.MoreFareTests.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.MoreFareTests]/[method:wurst()]</span></span> negated conditional &rarr; KILLED</span>
+</div> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>lambda$getNSchwarzfahrTrips$2<br/><b>Killed by : </b>com.graphhopper.gtfs.fare.MoreFareTests.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.MoreFareTests]/[method:wurst()]</span></span> replaced boolean return with true for com/graphhopper/gtfs/fare/TicketPurchase::lambda$getNSchwarzfahrTrips$2 &rarr; KILLED</span>
+</div> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>CONDITIONALS_BOUNDARY</li>
+<li class='mutator'>EMPTY_RETURNS</li>
+<li class='mutator'>FALSE_RETURNS</li>
+<li class='mutator'>INCREMENTS</li>
+<li class='mutator'>INVERT_NEGS</li>
+<li class='mutator'>MATH</li>
+<li class='mutator'>NEGATE_CONDITIONALS</li>
+<li class='mutator'>NULL_RETURNS</li>
+<li class='mutator'>PRIMITIVE_RETURNS</li>
+<li class='mutator'>TRUE_RETURNS</li>
+<li class='mutator'>VOID_METHOD_CALLS</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#38] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#40] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#7] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#9] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#12] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#14] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#39] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#37] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#22] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#24] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#8] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#11] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#13] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#36] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#21] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#23] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#3] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#2] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#4] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#6] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#1] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#19] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#17] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#18] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#29] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#27] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#16] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#28] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:buyMoreThanOneTicketIfTripIsLongerThanAllowedOnOne(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#14] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:buyMoreThanOneTicketIfTripIsLongerThanAllowedOnOne(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#12] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:withNoTransfersAndNoAlternativesBuyOneTicketForEachSegment(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#38] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:canGoAllTheWayOnOneTicket(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#2] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:canGoAllTheWayOnOneTicket(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#4] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:canGoAllTheWayOnOneTicket(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#6] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:canGoAllTheWayOnOneTicket(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#11] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:canGoAllTheWayOnOneTicket(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#13] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:withNoTransfersAndNoAlternativesBuyOneTicketForEachSegment(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#40] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:canGoAllTheWayOnOneTicket(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#36] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:withNoTransfersAndNoAlternativesBuyOneTicketForEachSegment(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#37] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:withNoTransfersAndNoAlternativesBuyOneTicketForEachSegment(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#39] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:canGoAllTheWayOnOneTicket(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#3] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#26] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#34] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#32] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifAllLegsPassThroughAllZonesOfTheTripItCantGetCheaper(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#39] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:withNoTransfersAndNoAlternativesBuyOneTicketForEachSegment(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#36] (1 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#33] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifIOnlyHaveOneTicketAndItIsZoneBasedItMustBeGoodForAllZonesOnMyTrip(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#31] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifAllLegsPassThroughAllZonesOfTheTripItCantGetCheaper(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#38] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifAllLegsPassThroughAllZonesOfTheTripItCantGetCheaper(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#40] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifAllLegsPassThroughAllZonesOfTheTripItCantGetCheaper(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#37] (1 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:canGoAllTheWayOnOneTicket(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#1] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:canGoAllTheWayOnOneTicket(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#21] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:canGoAllTheWayOnOneTicket(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#23] (0 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:ifAllLegsPassThroughAllZonesOfTheTripItCantGetCheaper(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#36] (2 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:irrelevantAlternatives(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#31] (214 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:irrelevantAlternatives(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#32] (216 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:irrelevantAlternatives(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#21] (223 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:irrelevantAlternatives(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#24] (224 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:irrelevantAlternatives(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#23] (224 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:irrelevantAlternatives(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#33] (219 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:irrelevantAlternatives(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#22] (228 ms)</li><li>com.graphhopper.gtfs.fare.FareTest.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.FareTest]/[test-template:irrelevantAlternatives(java.util.Map, com.graphhopper.gtfs.fare.Trip, java.lang.String)]/[test-template-invocation:#34] (223 ms)</li><li>com.graphhopper.gtfs.fare.MoreFareTests.[engine:junit-jupiter]/[class:com.graphhopper.gtfs.fare.MoreFareTests]/[method:wurst()] (434 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='https://pitest.org'>PIT</a> 1.17.1
+
+</body>
+</html>
