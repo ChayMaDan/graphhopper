@@ -24,35 +24,21 @@
 
 ## 1. Classe sélectionnée
 
-### 1.1 Identification
 
 **Classe :** `Fares.java`  
 **Package :** `com.graphhopper.gtfs.fare`  
 **Chemin :** [reader-gtfs/src/main/java/com/graphhopper/gtfs/fare/Fares.java](reader-gtfs/src/main/java/com/graphhopper/gtfs/fare/Fares.java)
 
-### 1.2 Justification du choix
-
-Cette classe a été sélectionnée pour les raisons suivantes :
-
-- **Couverture de code existante élevée** : 98% (43/44 lignes)
-- **Score de mutation initial modéré** : 77% (23/30 mutants tués)
+- **Couverture de code original** : 98% (43/44 lignes)
+- **Score de mutation initial** : 77% (23/30 mutants tués)
 - **7 mutants survivants identifiés** : Possibilité de créer plusieurs tests ciblés
-- **Complexité raisonnable** : Méthodes testables avec des dépendances gérables
 
-
-La classe `Fares` gère le calcul des tarifs pour les trajets de transport en commun, incluant :
-- Le calcul du tarif le moins cher pour un trajet
-- La gestion des règles tarifaires (routes, zones, origine-destination)
-- L'application des restrictions tarifaires
 
 ---
 
 ## 2. Configuration du projet
 
 ### 2.1 Ajout de PiTest
-
-**Version :** 1.17.1  
-**Plugin JUnit5 :** 1.2.1
 
 **Configuration dans [reader-gtfs/pom.xml](reader-gtfs/pom.xml) :**
 
@@ -99,8 +85,6 @@ La classe `Fares` gère le calcul des tarifs pour les trajets de transport en co
 
 ### 2.2 Ajout de java-faker
 
-**Version :** 1.0.2
-
 **Dépendance ajoutée dans [reader-gtfs/pom.xml](reader-gtfs/pom.xml) :**
 
 ```xml
@@ -116,37 +100,11 @@ La classe `Fares` gère le calcul des tarifs pour les trajets de transport en co
 
 ## 3. Analyse de mutation AVANT les nouveaux tests
 
-### 3.1 Exécution de PiTest
-
-**Commande exécutée :**
+**Commande :**
 ```bash
 cd reader-gtfs
 mvn clean test org.pitest:pitest-maven:mutationCoverage
 ```
-
-**Temps d'exécution :** 2 minutes 53 secondes
-
-### 3.2 Résultats globaux du module reader-gtfs
-
-**Statistiques globales (tous les fichiers) :**
-- **Couverture de lignes :** 41% (1349/3328)
-- **Mutations générées :** 1893
-- **Mutations tuées :** 643 (34%)
-- **Mutations sans couverture :** 1126
-- **Force des tests :** 84%
-- **Tests exécutés :** 1387
-
-### 3.3 Résultats pour Fares.java
-
-**Métriques spécifiques :**
-- **Line Coverage :** 98% (43/44)
-- **Mutation Coverage :** 77% (23/30)
-- **Test Strength :** 77% (23/30)
-
-**Interprétation :**
-- 23 mutants tués par les tests existants
-- **7 mutants survivants** à cibler avec nos nouveaux tests
-- Des comportements limites non testés
 
 **Rapport PiTest :** [rapport-pitest-avant/index.html](reader-gtfs/rapport-pitest-avant/index.html)
 
@@ -156,9 +114,8 @@ mvn clean test org.pitest:pitest-maven:mutationCoverage
 
 ![Fares.java AVANT](reader-gtfs/Screenshots/Fares_AVANT.png)
 
-### 3.4 Identification des mutants survivants ciblés
+### 3.4 Les mutants survivants ciblés
 
-Les mutants survivants ont été identifiés dans le rapport PiTest détaillé :
 
 | Ligne | Mutant | Type | Mon test |
 |-------|--------|------|----------|
@@ -262,17 +219,11 @@ En simulant des données réalistes, la couverture du code est augmentée grâce
 
 ## 5. Analyse de mutation APRES les nouveaux tests
 
-### 5.1 Exécution de PiTest avec les nouveaux tests
-
-**Commande exécutée :**
+**Commande :**
 ```bash
 cd reader-gtfs
 mvn clean test org.pitest:pitest-maven:mutationCoverage
 ```
-
-**Temps d'exécution :** 2 minutes and 56 seconds
-
-### 5.2 Résultats pour Fares.java
 
 **Métriques obtenues :**
 - **Line Coverage :** 98% (43/44)
@@ -334,11 +285,6 @@ cd reader-gtfs
 mvn test -Dtest=NewFareTest
 ```
 
-**Résultat attendu :**
-```
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
-```
-
 ![Résultat tests](reader-gtfs/Screenshots/Tests.png)
 
 ### 6.2 Exécution avec mutation testing
@@ -353,14 +299,6 @@ mvn clean test org.pitest:pitest-maven:mutationCoverage
 **Rapport PiTest AVANT:** [rapport-pitest-avant/terminal-output.tx](reader-gtfs/rapport-pitest-avant/terminal-output.txt)
 
 **Rapport PiTest APRES:** [rapport-pitest-avant/terminal-output.tx](reader-gtfs/rapport-pitest-avant/terminal-output.txt)
-
-
-### 6.3 GitHub Actions
-
-**Vérification :** Les nouveaux tests s'exécutent avec succès dans GitHub Actions.
-
-![Screenshot de GitHub Actions](Screenshots/GithubActions.png)
-
 
 ---
 
