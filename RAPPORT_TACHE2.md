@@ -114,19 +114,6 @@ mvn clean test org.pitest:pitest-maven:mutationCoverage
 
 ![Fares.java AVANT](reader-gtfs/Screenshots/Fares_AVANT.png)
 
-### 3.4 Les mutants survivants ciblés
-
-
-| Ligne | Mutant | Type | Mon test |
-|-------|--------|------|----------|
-| 92 | `replaced boolean return with false` | Retour booléen | Test 1 |
-| 99 | `negated conditional` | Condition négative (origin_id) | Test 2 |
-| 99 | `negated conditional` | Condition négative (destination_id) | Test 2 |
-| 100 | `replaced boolean return with true` | Retour booléen | Test 3 |
-| 100 | `negated conditional` | Condition négative | Test 3 |
-| 100 | `replaced return value with ""` | Retour chaîne | Test 4 |
-| 101 | `replaced return with Collections.emptyList` | Retour collection | Test 5 |
-
 
 ![Détail des mutations](reader-gtfs/Screenshots/Mutations_AVANT1.png)
 
@@ -196,6 +183,7 @@ Vérifier que `sanitizeFareRules()` crée une règle de zone `ZoneRule` même lo
 
 **Oracle :**  
 La liste doit contenir 1 `ZoneRule` (avec une zone vide). Si le mutant remplace la valeur par une chaîne vide, cela pourrait affecter la création de la règle.
+
 ---
 
 ### Test 5 : `SanitizeFareRulesNeverReturnsEmptyListTest`
@@ -225,7 +213,6 @@ cd reader-gtfs
 mvn clean test org.pitest:pitest-maven:mutationCoverage
 ```
 
-**Métriques obtenues :**
 - **Line Coverage :** 98% (43/44)
 - **Mutation Coverage :** 87% (26/30)
 - **Test Strength :** 87% (26/30)
@@ -242,7 +229,6 @@ mvn clean test org.pitest:pitest-maven:mutationCoverage
 
 ![Fares.java APRES](reader-gtfs/Screenshots/Fares_APRES.png)
 
-### 5.3 Comparaison détaillée des mutants
 
 | Ligne | Mutant | Statut AVANT | Statut APRES | Mon test |
 |-------|--------|--------------|--------------|----------|
@@ -257,17 +243,8 @@ mvn clean test org.pitest:pitest-maven:mutationCoverage
 ![Détail des mutations](reader-gtfs/Screenshots/Mutations_APRES.png)
 
 
-### 5.4 Explication des mutations
-
-#### Mutant ligne 92 (Test 1)
-Le test 1 vérifie qu'une fare sans règles est incluse dans `possibleFares()`. Le mutant remplace le retour par `false`, et donc `applies()` retourne `false` au lieu de `true`. La fare n'est donc pas ajoutée à la liste, et l'assertion `assertTrue(resultat)` échoue.
-
 #### Mutants ligne 99 (Test 2)
 Le test vérifie qu'une `OriginDestinationRule` est créée quand les 2 IDs sont présents. Si l'un des conditionnels est inversé (mutant), le filtre `origin_id != null && destination_id != null` échoue. Et donc `assertEquals(1, count)` ne trouve aucune règle.
-
-#### Mutants ligne 100 (Tests 3 et 4)
-- **Test 3** vérifie qu'une `ZoneRule` est créée avec des zones données. Si le conditionnel est inversé ou le retour booléen modifié, aucune zone n'est trouvée et `assertEquals(1, count)` échoue.
-- **Test 4** vérifie le cas où il y a pas de zone. Si le mutant remplace la valeur par une chaîne vide, la création de la `ZoneRule` est affectée.
 
 #### Mutant ligne 101 (Test 5) 
 Le test 5 vérifie que le résultat n'est jamais vide. Le mutant remplace le retour par `Collections.emptyList()`, ce qui fait échouer `assertFalse(resultat.isEmpty())` et `assertTrue(resultat.size() >= 1)`.
@@ -292,9 +269,6 @@ mvn test -Dtest=NewFareTest
 ```bash
 mvn clean test org.pitest:pitest-maven:mutationCoverage
 ```
-
-**Vérification :** Tous les tests (originaux et nouveaux) passent avant l'analyse de mutation.
-
 **Rapport PiTest AVANT:** [rapport-pitest-avant/terminal-output.tx](reader-gtfs/rapport-pitest-avant/terminal-output.txt)
 
 **Rapport PiTest APRES:** [rapport-pitest-avant/terminal-output.tx](reader-gtfs/rapport-pitest-avant/terminal-output.txt)
