@@ -33,6 +33,14 @@
 - **Score de mutation initial** : 77% (23/30 mutants tués)
 - **7 mutants survivants identifiés** : Possibilité de créer plusieurs tests ciblés
 
+**Classe :** `core`  
+**Package :** `com.graphhopper.until.shape.Polygon`
+**Chemin :** [core/src/main/java/com/graphhopper/util/shapes/Polygon.java](core/src/main/java/com/graphhopper/util/shapes/Polygon.java)
+
+
+**Classe :** `core`  
+**Package :** `com.graphhopper.reader.dem.HeightTile`
+**Chemin :** [core/src/main/java/com/graphhopper/reader/dem/HeightTile.java](core/src/main/java/com/graphhopper/reader/dem/HeightTile.java)
 
 ---
 
