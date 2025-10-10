@@ -24,6 +24,7 @@
 
 ## 1. Classe sélectionnée
 
+### Partie 1
 
 **Classe :** `Fares.java`  
 **Package :** `com.graphhopper.gtfs.fare`  
@@ -32,6 +33,8 @@
 - **Couverture de code original** : 98% (43/44 lignes)
 - **Score de mutation initial** : 77% (23/30 mutants tués)
 - **7 mutants survivants identifiés** : Possibilité de créer plusieurs tests ciblés
+
+### Partie 2
 
 **Classe :** `core`  
 **Package :** `com.graphhopper.until.shape.Polygon`
