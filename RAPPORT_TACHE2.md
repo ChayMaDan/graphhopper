@@ -211,7 +211,7 @@ Vérifier que `sanitizeFareRules()` ne retourne **jamais** une liste vide même 
 - **FareRule 3 :** `contains_id = faker.regexify("zone[A-Z]")` → Ex: `"zoneC"`
 
 **Oracle :**  
-La liste retournée ne doit **jamais** être vide (`result.isEmpty() == false` ET `result.size() >= 1`). Le code ajoute toujours au minimum une `ZoneRule`, donc même avec des données aléatoires, la liste doit contenir au moins un élément.
+La liste retournée ne doit **jamais** être vide (`resultat.isEmpty() == false` ET `resultat.size() >= 1`). Le code ajoute toujours au minimum une `ZoneRule`, donc même avec des données aléatoires, la liste doit contenir au moins un élément.
 
 En simulant des données réalistes, la couverture du code est augmentée grâce au caractère aléatoire des fakers. 
 
@@ -233,7 +233,6 @@ mvn clean test org.pitest:pitest-maven:mutationCoverage
 **Amélioration :**
 - Mutants tués avant : 23/30 (77%)
 - Mutants tués après : 26/30 (87%)
-- **+3 mutants tués**
 
 **Rapport PiTest :** [rapport-pitest-apres/index.html](reader-gtfs/rapport-pitest-apres/index.html)
 
@@ -261,7 +260,7 @@ mvn clean test org.pitest:pitest-maven:mutationCoverage
 ### 5.4 Explication des mutations
 
 #### Mutant ligne 92 (Test 1)
-Le test 1 vérifie qu'une fare sans règles est incluse dans `possibleFares()`. Le mutant remplace le retour par `false`, et donc `applies()` retourne `false` au lieu de `true`. La fare n'est donc pas ajoutée à la liste, et l'assertion `assertTrue(result)` échoue.
+Le test 1 vérifie qu'une fare sans règles est incluse dans `possibleFares()`. Le mutant remplace le retour par `false`, et donc `applies()` retourne `false` au lieu de `true`. La fare n'est donc pas ajoutée à la liste, et l'assertion `assertTrue(resultat)` échoue.
 
 #### Mutants ligne 99 (Test 2)
 Le test vérifie qu'une `OriginDestinationRule` est créée quand les 2 IDs sont présents. Si l'un des conditionnels est inversé (mutant), le filtre `origin_id != null && destination_id != null` échoue. Et donc `assertEquals(1, count)` ne trouve aucune règle.
@@ -271,7 +270,7 @@ Le test vérifie qu'une `OriginDestinationRule` est créée quand les 2 IDs sont
 - **Test 4** vérifie le cas où il y a pas de zone. Si le mutant remplace la valeur par une chaîne vide, la création de la `ZoneRule` est affectée.
 
 #### Mutant ligne 101 (Test 5) 
-Le test 5 vérifie que le résultat n'est jamais vide. Le mutant remplace le retour par `Collections.emptyList()`, ce qui fait échouer `assertFalse(result.isEmpty())` et `assertTrue(result.size() >= 1)`.
+Le test 5 vérifie que le résultat n'est jamais vide. Le mutant remplace le retour par `Collections.emptyList()`, ce qui fait échouer `assertFalse(resultat.isEmpty())` et `assertTrue(resultat.size() >= 1)`.
 
 ---
 
