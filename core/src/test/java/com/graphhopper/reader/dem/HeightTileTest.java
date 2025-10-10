@@ -21,7 +21,7 @@ import com.graphhopper.storage.DataAccess;
 import com.graphhopper.storage.RAMDirectory;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author Peter Karich
@@ -154,5 +154,115 @@ public class HeightTileTest {
             sum += n;
         }
         return sum / ns.length;
+    }
+    /**
+     * testToString
+     *
+     * but : vérifier que toString() renvoie une chaîne correcte pour HeightTile.
+     * idée : utile pour le débogage et les journaux.
+     * attendu :
+     *  - jamais null ni vide
+     *  - format "minLat,minLon"
+     *  - les valeurs négatives et positives s’affichent correctement (ex : -15 et 25)
+     */
+    @Test
+    public void testToString() {
+        HeightTile heightTile = new HeightTile(-15, 25, 10, 10, 1e-6, 1, 1);
+        String result = heightTile.toString();
+
+        assertNotNull(result, "toString() ne doit jamais renvoyer null");
+        assertTrue(result.length() > 0, "toString() ne doit pas être vide");
+
+        // vérifie que le format et les valeurs sont corrects
+        assertTrue(result.contains("-15"), "Doit contenir la valeur minLat");
+        assertTrue(result.contains("25"), "Doit contenir la valeur minLon");
+        assertTrue(result.contains(","), "Doit contenir une virgule comme séparateur");
+        assertEquals("-15,25", result, "Doit correspondre exactement au format 'minLat,minLon'");
+    }
+
+    /**
+     * testIsSeaLevel
+     *
+     * but : vérifier que isSeaLevel() et setSeaLevel() fonctionnent correctement.
+     * idée : permet de savoir si une tuile est au niveau de la mer.
+     * test :
+     *  - état initial false
+     *  - passage à true
+     *  - retour à false
+     * attendu :
+     *  - par défaut = false
+     *  - après setSeaLevel(true) = true
+     *  - setSeaLevel() renvoie la même instance (API fluide)
+     *  - après setSeaLevel(false) = false
+     */
+
+    @Test
+    public void testIsSeaLevel() {
+        HeightTile heightTile = new HeightTile(0, 0, 5, 5, 1e-6, 1, 1);
+        DataAccess heights = new RAMDirectory().create("tmp");
+        heights.create(2 * 5 * 5);
+        heightTile.setHeights(heights);
+
+        // état initial : false
+        assertFalse(heightTile.isSeaLevel(),
+                "Le niveau de la mer doit être faux au départ");
+
+        // passage à true
+        HeightTile result = heightTile.setSeaLevel(true);
+        assertEquals(heightTile, result,
+                "setSeaLevel doit renvoyer la même instance");
+        assertTrue(heightTile.isSeaLevel(),
+                "Le niveau de la mer doit être vrai après setSeaLevel(true)");
+
+        // retour à false
+        heightTile.setSeaLevel(false);
+        assertFalse(heightTile.isSeaLevel(),
+                "Le niveau de la mer doit redevenir false");
+    }
+
+    /**
+     * testGetHeightBoundaryExceptions
+     *
+     * but : vérifier que getHeight() lève une erreur quand les coordonnées dépassent les limites.
+     * idée : éviter les accès invalides qui provoqueraient des bugs silencieux.
+     * configuration :
+     *  - précision = 1.0 = limites simples à calculer (borne inférieure = -1, borne supérieure = 2)
+     *  - tuile positionnée à (0, 0) avec 10x10
+     * test :
+     *  - latitude = 3.0 = hors limites = exception
+     *  - longitude = 3.0 = hors limites = exception
+     * attendu :
+     *  - IllegalStateException dans les deux cas
+     *  - message clair indiquant la latitude ou la longitude fautive
+     */
+
+    @Test
+    public void testGetHeightBoundaryExceptions() {
+        // précision simple pour avoir des limites prévisibles
+        HeightTile heightTile = new HeightTile(0, 0, 10, 10, 1.0, 1, 1);
+        DataAccess heights = new RAMDirectory().create("tmp");
+        heights.create(2 * 10 * 10);
+        heightTile.setHeights(heights);
+        init(heights, 10, 10, 1);
+
+        // latitude hors limites : |3 - 0| = 3 > 2
+        Exception latException = assertThrows(IllegalStateException.class, () -> {
+            heightTile.getHeight(3.0, 0.5); // deltaLat = 3 > latHigherBound = 2
+        }, "Doit lever une exception pour une latitude hors limites");
+
+        assertTrue(latException.getMessage().contains("latitude not in boundary"),
+                "Le message doit mentionner la latitude");
+        assertTrue(latException.getMessage().contains("3.0"),
+                "Le message doit contenir la valeur fautive");
+
+        // longitude hors limites : |3 - 0| = 3 > 2
+        Exception lonException = assertThrows(IllegalStateException.class, () -> {
+            heightTile.getHeight(0.5, 3.0); // deltaLon = 3 > lonHigherBound = 2
+        }, "Doit lever une exception pour une longitude hors limites");
+
+        assertTrue(lonException.getMessage().contains("longitude not in boundary"),
+                "Le message doit mentionner la longitude");
+        assertTrue(lonException.getMessage().contains("3.0"),
+                "Le message doit contenir la valeur fautive");
     }
 }
