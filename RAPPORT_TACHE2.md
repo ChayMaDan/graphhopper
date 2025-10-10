@@ -1,10 +1,14 @@
 # Tâche 2 : Tests unitaires Automatiques
 
 **Autrices :** Chaimaa Dannane && Ines Amelia Chafai
+
 **Date :** 7 octobre 2025
+
 **Structure du projet:**
-**Partie 1:** Ce rapport présente une partie de la tâche 2. Ce partie couvre les 5 tests (dont 1 java-faker) dans le **module** `reader-gtfs` sur la **classe** `com.graphhopper.gtfs.fare.Fares`
-**Partie 2:** L'autre partie est consultable dans le documment accessible ici [lien]
+
+**Partie 1:** Ce rapport présente une partie de la tâche 2. Cette partie couvre les 5 tests (dont 1 java-faker) dans le **module** `reader-gtfs` sur la **classe** `com.graphhopper.gtfs.fare.Fares`
+
+**Partie 2:** L'autre partie est consultable dans le document accessible ici [lien]
 
 ---
 
