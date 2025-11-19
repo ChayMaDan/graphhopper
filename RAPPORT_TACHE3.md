@@ -205,8 +205,8 @@ De même pour le test 4 `testCalcRoadDensityNodeVisited`, nous simulons des noeu
  
 Une solution a été d'introduire au code cette annotation `@MockitoSettings(strictness = Strictness.LENIENT)`. cette configuration permet nous de rendre Mockito plus fexible et d'ignorer les stubs qui ne sont pas utilisés
 
-
-**Fichier créé :** [core/src/test/java/com/graphhopper/routing/weighting/QueryGraphWeightingTest.java](ccore/src/test/java/com/graphhopper/routing/weighting/QueryGraphWeightingTest.java)
+---
+**Fichier créé :** [core/src/test/java/com/graphhopper/routing/weighting/QueryGraphWeightingTest.java](core/src/test/java/com/graphhopper/routing/weighting/QueryGraphWeightingTest.java)
 
 La classe `QueryGraphWeighting` gère les calculs de coûts sur les virages. dans un graphe routiers, nous avons les noeuds et arêtes réels comme des intersections ou des routes définies et des noeuds et arêtes virtuels comme ta maison ou ton écoles (des points au mileu d'arêtes réelles). Selon le type de noeud et d'arêtes, il existe des règles qui permettent de calculer les coûts sur les virages. 
 
