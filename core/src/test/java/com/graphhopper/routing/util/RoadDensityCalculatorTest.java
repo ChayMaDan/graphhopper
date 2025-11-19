@@ -257,7 +257,7 @@ public class RoadDensityCalculatorTest {
      *         - Rayon de recherche de 200 mètres.
      *         - Facteur de pondération constant de 1.0 pour toutes les arêtes.
      * 
-     * Oracle : La densité routière doit être égale exactement à 0.0 lorsque le rayon est zéro.
+     * Oracle : La densité routière doit être égale exactement à 0.0.
     */
     @Test 
     public void testCalcRoadDensityNoAdjacentEdges() {
@@ -298,7 +298,7 @@ public class RoadDensityCalculatorTest {
         verify(edgeExplorer, times(2)).setBaseNode(anyInt());
         //next() est appelé 2 fois, une pour chaque noeud
         verify(edgeIterator, times(2)).next();
-        //getAdjNode() n'est jamais appelé car aucune arête 
+        //getAdjNode() n'est jamais appelé car aucune arête trouvée
         verify(edgeIterator, never()).getAdjNode();
     } 
 
