@@ -272,7 +272,7 @@ Le coût sur ce virage doit être 20 (valeur du mock).
 - **Nouveaux tests :** 
 [core/src/test/java/com/graphhopper/routing/util/RoadDensityCalculatorTest.java](core/src/test/java/com/graphhopper/routing/util/RoadDensityCalculatorTest.java)
 
-[core/src/test/java/com/graphhopper/routing/weighting/QueryGraphWeightingTest.java](ccore/src/test/java/com/graphhopper/routing/weighting/QueryGraphWeightingTest.java)
+[core/src/test/java/com/graphhopper/routing/weighting/QueryGraphWeightingTest.java](core/src/test/java/com/graphhopper/routing/weighting/QueryGraphWeightingTest.java)
 
 - **Configuration Maven :** [pom.xml](core/pom.xml)
 
