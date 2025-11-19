@@ -4,12 +4,6 @@
 
 **Date :** 21 novembre 2025
 
-**Structure du projet:**
-
-**Partie 1:** Ce rapport présente une partie de la tâche 2. Cette partie couvre les 5 tests (dont 1 java-faker) dans le **module** `reader-gtfs` sur la **classe** `com.graphhopper.gtfs.fare.Fares`
-
-**Partie 2:** L'autre partie est consultable dans le document accessible ici [lien](https://docs.google.com/document/d/1xoUPmSF_S6JCnY8hOrL8nvjKswFr9mjcAav-7BAAXZI/edit?tab=t.0)
-
 ---
 
 ## Table des matières
