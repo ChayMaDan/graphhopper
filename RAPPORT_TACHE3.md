@@ -272,10 +272,13 @@ Le test a été mis en commentaire, vous pouvez le retirer pour tester de votre 
 
 - Le workflow global reste en échec
 
-[github_summary](github_rickroll/github_summary.png)
-[github_annotations](github_rickroll/github_annotations.png)
-[github_failure](github_rickroll/github_failure.png)
-[github_log](github_rickroll/github_log.png)
+![github_summary](github_rickroll/github_summary.png)
+
+![github_annotations](github_rickroll/github_annotations.png)
+
+![github_failure](github_rickroll/github_failure.png)
+
+![github_log](github_rickroll/github_log.png)
 
 **Commande pour voir le rickroll :**
 
@@ -291,7 +294,7 @@ git push origin branch-actuelle
 
 Nous avons aussi testé lorsque tous les tests réussissent, et nous pouvons clairement voir que l'étape du `Rickroll` est ignorée. 
 
-[github_sans](github_rickroll/github_sans.png)
+![github_sans](github_rickroll/github_sans.png)
 
 ---
 
