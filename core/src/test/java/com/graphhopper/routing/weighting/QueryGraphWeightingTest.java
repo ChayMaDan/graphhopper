@@ -139,8 +139,8 @@ public class QueryGraphWeightingTest {
     }
 
     //Test pour vérifier le Rickroll
-    @Test
+    /*@Test
     public void testFailureRickroll(){
         fail("Déclenchement du Rickroll");
-    }
+    }*/
 }
