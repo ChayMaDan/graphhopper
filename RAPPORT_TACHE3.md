@@ -67,6 +67,7 @@ mvn -Dtest=QueryGraphWeightingTest test
 
 **Fichier créé :** [core/src/test/java/com/graphhopper/routing/util/RoadDensityCalculatorTest.java](core/src/test/java/com/graphhopper/routing/util/RoadDensityCalculatorTest.java)
 
+
 La classe `RoadDensityCalculator` a été choisie pour ses dépendances à la structure de données `Graph` et ses itérateurs d'arêtes. Elle nécesssite des calculs géographiques basés sur les coordonnés des noeuds et donc elle nécessite l'implémentation d'un graphe pour tester son comportement complexe. L'utilisation des mocks nous permet d'isoler la logique métier sans avoir à reproduire à grapje en complet.  
 
 **Classes mockées :**
@@ -202,6 +203,7 @@ Une solution a été d'introduire au code cette annotation `@MockitoSettings(str
 ---
 **Fichier créé :** [core/src/test/java/com/graphhopper/routing/weighting/QueryGraphWeightingTest.java](core/src/test/java/com/graphhopper/routing/weighting/QueryGraphWeightingTest.java)
 
+
 La classe `QueryGraphWeighting` gère les calculs de coûts sur les virages. dans un graphe routiers, nous avons les noeuds et arêtes réels comme des intersections ou des routes définies et des noeuds et arêtes virtuels comme ta maison ou ton écoles (des points au mileu d'arêtes réelles). Selon le type de noeud et d'arêtes, il existe des règles qui permettent de calculer les coûts sur les virages. 
 
 Cette utilise deux dépendances,`BaseGraph` Basegraph qui gère la structure du graphe routier et `Weighting` Weighting qui gère comment attribuer le coût aux virages. Les mocks nous permettent d'isoler la logique métier ces deux classes et de simuler leurs comportements pour bien tester ce problème complexe.
@@ -253,6 +255,8 @@ Le coût sur ce virage doit être 20 (valeur du mock).
 
 ## 3. Rickroll
 
+**Fichier modifié :** [.github/workflows/build.yml](.github/workflows/build.yml)
+
 Nous avons fait une implémentation simple du Rickroll en YAML.
 
 Le workflow utilise la condition `if: failure()` pour détecter l'échec à l'étape des tests Maven et déclenche automatiquement le rickroll. 
@@ -303,8 +307,12 @@ Nous avons aussi testé lorsque tous les tests réussissent, et nous pouvons cla
 - **Nouveaux tests avec mocks:** 
 [core/src/test/java/com/graphhopper/routing/util/RoadDensityCalculatorTest.java](core/src/test/java/com/graphhopper/routing/util/RoadDensityCalculatorTest.java)
 
+
 [core/src/test/java/com/graphhopper/routing/weighting/QueryGraphWeightingTest.java](core/src/test/java/com/graphhopper/routing/weighting/QueryGraphWeightingTest.java)
 
 - **Configuration Maven :** [pom.xml](core/pom.xml)
+
+- **Rickroll Build:** 
+[.github/workflows/build.yml](.github/workflows/build.yml)
 
 ---
