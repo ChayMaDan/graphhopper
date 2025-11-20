@@ -253,17 +253,54 @@ Le coût sur ce virage doit être 20 (valeur du mock).
 
 ## 3. Rickroll
 
+Nous avons fait une implémentation simple du Rickroll en YAML.
+
+Le workflow utilise la condition `if: failure()` pour détecter l'échec à l'étape des tests Maven et déclenche automatiquement le rickroll. 
+
+Sur Github, nous pouvons voir ce qui se passe quand un test échoue.
+
+- L'étape `Build and Test` échoue : ici, nous pouvons voir que l'exécution des tests a échoué à cause du test désigné à l'échec dans la classe `QueryGraphWeightingTest.java`.
+Le test a été mis en commentaire, vous pouvez le retirer pour tester de votre côté.
+
+- L'étape `Rickroll` affiche un message pour informer de l'échec des tests
+
+- Le workflow global reste en échec
+
+![github_summary](github_rickroll/github_summary.png)
+
+![github_annotations](github_rickroll/github_annotations.png)
+
+![github_failure](github_rickroll/github_failure.png)
+
+![github_log](github_rickroll/github_log.png)
+
+**Commande pour voir le rickroll :**
+
+D'abord, il faut retirer le commentaire du test désigné pour l'échec dans la classe `QueryGraphWeightingTest.java` ou tout simplement écrire un test qui va échouer.
+
+Ensuite, il faut faire un commit et le pousser. 
+
+```bash
+git add .
+git commit -m "Tester le rickroll"
+git push origin branch-actuelle
+```
+
+Nous avons aussi testé lorsque tous les tests réussissent, et nous pouvons clairement voir que l'étape du `Rickroll` est ignorée. 
+
+![github_sans](github_rickroll/github_sans.png)
+
 ---
 
 ## Annexes
 
 ### Fichiers sources
 
-- **Classe testée :** [core/src/main/java/com/graphhopper/routing/util/RoadDensityCalculator.java](core/src/main/java/com/graphhopper/routing/util/RoadDensityCalculator.java)
+- **Classes testées :** [core/src/main/java/com/graphhopper/routing/util/RoadDensityCalculator.java](core/src/main/java/com/graphhopper/routing/util/RoadDensityCalculator.java)
 
 [core/src/main/java/com/graphhopper/routing/weighting/QueryGraphWeighting.java](core/src/main/java/com/graphhopper/routing/weighting/QueryGraphWeighting.java)
 
-- **Nouveaux tests :** 
+- **Nouveaux tests avec mocks:** 
 [core/src/test/java/com/graphhopper/routing/util/RoadDensityCalculatorTest.java](core/src/test/java/com/graphhopper/routing/util/RoadDensityCalculatorTest.java)
 
 [core/src/test/java/com/graphhopper/routing/weighting/QueryGraphWeightingTest.java](core/src/test/java/com/graphhopper/routing/weighting/QueryGraphWeightingTest.java)
