@@ -37,7 +37,6 @@ jobs:
       #Build et Test
       - name: Build and Test ${{ matrix.java-version }}
         id: tests
-        continue-on-error: true
         run: mvn -B clean test
       #Rickroll
       - name: Rickroll
