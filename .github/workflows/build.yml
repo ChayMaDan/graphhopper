@@ -34,12 +34,15 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/pom.xml', '**/package.json') }}
           restore-keys: |
             ${{ runner.os}}-node_modules-
+      #Build et Test
       - name: Build and Test ${{ matrix.java-version }}
         id: tests
         continue-on-error: true
         run: | 
           mvn -B clean test
-          echo "test_result=$?" >> $GITHUB_OUTPUT
+          TEST_OUTPUT=$?
+          echo "test_result=$TEST_OUTPUT" >> $GITHUB_OUTPUT
+          exit 0 
       #Rickroll
       - name: Rickroll
         if: steps.tests.outputs.test_result != '0'
@@ -80,7 +83,12 @@ jobs:
 
           echo "::error title= Rickroll Test Failure:: Vos tests ont échoué!"
           echo "::warning title= Meme::https://blog.zegocloud.com/wp-content/uploads/2024/02/programming-meme-22.jpg"
+          cat >> $GITHUB_STEP_SUMMARY << 'EOF'
+          ![MEME](https://blog.zegocloud.com/wp-content/uploads/2024/02/programming-meme-22.jpg)
 
+          Un ou plusieurs tests ont échoué ! Corrigez votre code. 
+          EOF
+      #Build doit échoué par la suite
       - name: Build failure when tests fail
         if: steps.tests.outputs.test_result != '0'
         run: |
