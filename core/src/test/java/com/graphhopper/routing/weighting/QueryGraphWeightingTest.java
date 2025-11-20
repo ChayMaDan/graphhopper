@@ -1,6 +1,7 @@
 package com.graphhopper.routing.weighting;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
@@ -135,5 +136,11 @@ public class QueryGraphWeightingTest {
         assertEquals(turnWeightExpected, turnWeight);
 
         verify(weighting, times(1)).calcTurnWeight(inEdge, realNode, outEdge);
+    }
+
+    //Test pour vérifier le Rickroll
+    @Test
+    public void testFailureRickroll(){
+        fail("Déclenchement du Rickroll");
     }
 }
