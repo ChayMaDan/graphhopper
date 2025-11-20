@@ -34,6 +34,51 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/pom.xml', '**/package.json') }}
           restore-keys: |
             ${{ runner.os}}-node_modules-
-      - name: Build ${{ matrix.java-version }}
+      #Build et Test
+      - name: Build and Test ${{ matrix.java-version }}
         run: mvn -B clean test
+      #Rickroll
+      - name: Rickroll
+        if: failure()
+        run: |
+          echo ""
+          echo "######################################################"
+          echo ""
+          echo ""
+          echo "                           ************"
+          echo "                           *********"
+          echo "                           ************"
+          echo "                           *********"
+          echo "                           *"
+          echo "                           *"
+          echo "                           *"
+          echo "                         * * *"
+          echo "                        ** * **"
+          echo "                      **** * ****"
+          echo "                    ****** * ******"
+          echo "                  ******** * ********"
+          echo "                ********** * **********"
+          echo "              ************ * ************"
+          echo "            ************** * **************"
+          echo "  *************************************************"
+          echo "      *****************************************"
+          echo "          *********************************"
+          echo "            *****************************"
+          echo "                *********************"
+          echo "###################################################"
+          echo "###################################################"
+          echo ""
+          echo ""
+          echo "    OHÉ!! OHÉ!! MATELOT !! Matelot navigue sur les flots..."
+          echo ""
+          echo "                Vos tests ont échoué !  :-("
+          echo "         Corrigez votre code avant de vous noyer !!!!! "
+          echo ""
 
+          echo "::error title= Rickroll Test Failure:: Vos tests ont échoué!"
+          echo "::warning title= Meme::https://blog.zegocloud.com/wp-content/uploads/2024/02/programming-meme-22.jpg"
+          cat >> $GITHUB_STEP_SUMMARY << 'EOF'
+          ![MEME](https://blog.zegocloud.com/wp-content/uploads/2024/02/programming-meme-22.jpg)
+
+          Un ou plusieurs tests ont échoué ! Corrigez votre code. 
+          EOF
