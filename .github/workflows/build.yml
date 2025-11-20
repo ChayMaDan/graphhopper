@@ -36,7 +36,6 @@ jobs:
             ${{ runner.os}}-node_modules-
       #Build et Test
       - name: Build and Test ${{ matrix.java-version }}
-        id: tests
         run: mvn -B clean test
       #Rickroll
       - name: Rickroll
@@ -83,10 +82,3 @@ jobs:
 
           Un ou plusieurs tests ont échoué ! Corrigez votre code. 
           EOF
-      #Build doit échoué par la suite
-      - name: Build failure when tests fail
-        if: failure()
-        run: |
-          echo "Compilation échouée : échecs de tests"
-          exit 1
-
