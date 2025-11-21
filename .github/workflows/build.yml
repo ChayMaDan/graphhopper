@@ -43,6 +43,14 @@ jobs:
         if: success()
         run: mvn -B test
       
+      # Setup Java 21 for PIT (Java 24 not fully compatible)
+      - name: Setup Java 21 for PIT
+        if: success()
+        uses: actions/setup-java@v4
+        with:
+          java-version: 21
+          distribution: temurin
+      
       # PIT Mutation Testing (core module only - specific classes)
       - name: Run PIT Mutation Testing (core)
         if: success()
