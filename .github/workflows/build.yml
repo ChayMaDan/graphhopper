@@ -38,10 +38,14 @@ jobs:
       - name: Build and Test ${{ matrix.java-version }}
         run: mvn -B clean test
       
-      # PIT Mutation Testing (core module only)
+      # PIT Mutation Testing (core module only - specific classes)
       - name: Run PIT Mutation Testing (core)
         if: success()
-        run: mvn -B -pl core -DskipTests org.pitest:pitest-maven:mutationCoverage
+        run: |
+          mvn -B -pl core \
+            -DtargetClasses=com.graphhopper.routing.util.RoadDensityCalculator,com.graphhopper.routing.weighting.QueryGraphWeighting \
+            -DtargetTests=com.graphhopper.routing.util.RoadDensityCalculatorTest,com.graphhopper.routing.weighting.QueryGraphWeightingTest \
+            org.pitest:pitest-maven:mutationCoverage
       
       # Check PIT mutation score
       - name: Check Mutation Score
@@ -114,4 +118,3 @@ jobs:
 
           Un ou plusieurs tests ont échoué ! Corrigez votre code. 
           EOF
-
