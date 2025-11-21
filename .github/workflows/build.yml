@@ -55,10 +55,8 @@ jobs:
       - name: Run PIT Mutation Testing (core)
         if: success()
         run: |
-          mvn -B -pl core \
-            -DtargetClasses=com.graphhopper.routing.util.RoadDensityCalculator,com.graphhopper.routing.weighting.QueryGraphWeighting \
-            -DtargetTests=com.graphhopper.routing.util.RoadDensityCalculatorTest,com.graphhopper.routing.weighting.QueryGraphWeightingTest \
-            org.pitest:pitest-maven:mutationCoverage
+          cd core
+          mvn -B org.pitest:pitest-maven:mutationCoverage
       
       # Check PIT mutation score
       - name: Check Mutation Score
