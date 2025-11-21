@@ -36,7 +36,12 @@ jobs:
             ${{ runner.os}}-node_modules-
       #Build et Test
       - name: Build and Test ${{ matrix.java-version }}
-        run: mvn -B clean test
+        run: mvn -B clean install -DskipTests
+      
+      # Run tests
+      - name: Run Tests
+        if: success()
+        run: mvn -B test
       
       # PIT Mutation Testing (core module only - specific classes)
       - name: Run PIT Mutation Testing (core)
