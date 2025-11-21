@@ -1,0 +1,38 @@
+name: PIT mutation testing (core)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - 'core/**'
+      - '.github/workflows/pit.yml'
+
+jobs:
+  pit-core:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - name: Run unit tests (core)
+        run: mvn -B -pl core test
+
+      - name: Run PIT mutation testing (core)
+        if: success()
+        run: mvn -B -pl core -DskipTests org.pitest:pitest-maven:mutationCoverage
+
+      - name: Upload PIT report
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pit-core-report
+          path: core/target/pit-reports

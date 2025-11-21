@@ -1,4 +1,4 @@
-# Tâche 2 : Tests unitaires Automatiques
+# Tâche 3 : tests d'intégration
 
 **Autrices :** Chaimaa Dannane && Ines Amelia Chafai
 

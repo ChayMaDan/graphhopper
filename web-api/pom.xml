@@ -32,8 +32,36 @@
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-xml</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
+    <!-- PIT configuration specific to this module -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <configuration>
+                    <targetClasses>
+                        <param>com.graphhopper.jackson.InstructionListSerializer</param>
+                        <param>com.graphhopper.jackson.MultiExceptionSerializer</param>
+                    </targetClasses>
+                    <targetTests>
+                        <param>com.graphhopper.jackson.*</param>
+                    </targetTests>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
 </project>
-
-

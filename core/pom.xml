@@ -135,7 +135,6 @@
     <build>
         <pluginManagement>
             <plugins>
-                <!-- create jar with test classes to be reused in other projects -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
@@ -175,9 +174,24 @@
                     <failOnUnableToExtractRepoInfo>false</failOnUnableToExtractRepoInfo>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>1.15.8</version>
+                <configuration>
+                    <targetClasses>
+                        <param>com.graphhopper.routing.util.RoadDensityCalculator</param>
+                        <param>com.graphhopper.routing.weighting.QueryGraphWeighting</param>
+                    </targetClasses>
+
+                    <targetTests>
+                        <param>com.graphhopper.routing.util.RoadDensityCalculatorTest</param>
+                        <param>com.graphhopper.routing.weighting.QueryGraphWeightingTest</param>
+                    </targetTests>
+                </configuration>
+            </plugin>
         </plugins>
 
-        <!-- make version available at runtime via version file -->
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
