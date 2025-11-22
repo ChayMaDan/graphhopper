@@ -41,13 +41,7 @@ jobs:
       # Run tests
       - name: Run Tests
         run: mvn -B test
-      
-      # Setup Java 17 for PIT (better compatibility)
-      - name: Setup Java 17 for PIT
-        uses: actions/setup-java@v4
-        with:
-          java-version: 17
-          distribution: temurin
+    
       
       # PIT Mutation Testing (core module only)
       - name: Run PIT Mutation Testing (core)
