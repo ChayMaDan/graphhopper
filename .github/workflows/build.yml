@@ -47,7 +47,7 @@ jobs:
       - name: Run PIT Mutation Testing (core)
         run: |
           cd core
-          mvn -B org.pitest:pitest-maven:mutationCoverage
+          mvn -B clean test org.pitest:pitest-maven:mutationCoverage
       
       # Check PIT mutation score
       - name: Check Mutation Score
